@@ -39,7 +39,7 @@ jobs:
         run: mkdir -p ./dist/paper
 
       - name: copy
-        run: cp -r ./paper/dist/  ./dist/paper/
+        run: cp -r ./paper/dist/**  ./dist/paper/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
