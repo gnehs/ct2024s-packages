@@ -11,11 +11,31 @@ function App() {
   async function downloadPDF() {
     window.print();
   }
+  function downloadJSON() {
+    const splitedText = [...new Set(text.split(""))];
+    let result: {
+      CP950: {
+        UNICODE: string;
+      }[];
+    } = { CP950: [] };
+    for (let item of splitedText) {
+      result["CP950"].push({
+        UNICODE: item.charCodeAt(0).toString(16).toUpperCase(),
+      });
+    }
+    const json = JSON.stringify(result);
+    const blob = new Blob([json], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "CP950.json";
+    a.click();
+  }
   return (
     <div className="flex w-screen">
       <div className="w-[400px] p-4 flex flex-col gap-1 border-r border-slate-100 print:hidden sticky top-0 h-screen shrink-0">
         <div className="text-2xl font-bold">稿紙產生器</div>
-        <div className="mb-2 text-slate-400">v1.0.0</div>
+        <div className="mb-2 text-slate-400">v1.1.0</div>
         <label
           htmlFor="info"
           className="block text-slate-900 font-semibold mt-2"
@@ -68,8 +88,14 @@ function App() {
         />
         <div className="grow" />
         <button
+          onClick={() => downloadJSON()}
+          className="p-2 bg-slate-100 text-slate-500 rounded-md hover:bg-slate-200 font-bold transition-colors duration-200 ease-in-out shadow-sm mb-2"
+        >
+          下載 JSON
+        </button>
+        <button
           onClick={() => downloadPDF()}
-          className="p-2 bg-slate-100 text-slate-500 rounded-md hover:bg-slate-200 font-bold transition-colors duration-200 ease-in-out shadow-sm"
+          className="p-2 bg-slate-500 text-slate-100 rounded-md hover:bg-slate-200 font-bold transition-colors duration-200 ease-in-out shadow-sm"
         >
           列印
         </button>
