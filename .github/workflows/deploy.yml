@@ -43,10 +43,10 @@ jobs:
         run: npm run build
         working-directory: ./paper
 
-      - name: make dist
+      - name: Make dist directory
         run: mkdir -p ./dist/paper
 
-      - name: copy
+      - name: Copy to dist
         run: cp -r ./paper/dist/**  ./dist/paper/
 
       - name: Upload artifact
