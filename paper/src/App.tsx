@@ -95,7 +95,7 @@ function App() {
         </button>
         <button
           onClick={() => downloadPDF()}
-          className="p-2 bg-slate-500 text-slate-100 rounded-md hover:bg-slate-200 font-bold transition-colors duration-200 ease-in-out shadow-sm"
+          className="p-2 bg-slate-500 text-slate-100 rounded-md hover:bg-slate-600 font-bold transition-colors duration-200 ease-in-out shadow-sm"
         >
           列印
         </button>
