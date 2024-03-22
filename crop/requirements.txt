@@ -1,0 +1,8 @@
+jdeskew==0.2.2
+natsort==8.4.0
+numpy==1.26.4
+opencv_python==4.6.0.66
+opencv_python_headless==4.9.0.80
+Pillow==10.1.0
+Pillow==10.2.0
+tqdm==4.62.3
